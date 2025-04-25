@@ -1,0 +1,36 @@
+# Tomcat
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 8866
+    # 打开注释，则通过【http://localhost:8065/api/logistics】访问
+    servlet:
+        context-path: /api/iot
+    compression:
+        # 启用压缩
+        enabled: true
+        mime-types: application/json,application/xml,text/html,text/xml,text/plain
+        
+spring:
+    # 环境 dev:开发环境|test:测试环境|prod:生成环境
+    profiles:
+        active: dev
+    # jackson时间格式化
+    jackson:
+        # time-zone: GMT+8
+        #date-format: yyyy-MM-dd HH:mm:ss
+        serialization:
+            write-dates-as-timestamps: true
+    http:
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB
+            enabled: true
+    application:
+        name: iot
+
+    
+system:
+    code: api
